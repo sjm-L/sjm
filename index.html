@@ -37,7 +37,8 @@
 
           const permission = await Notification.requestPermission();
           if (permission !== "granted") {
-            alert("❌ 알림 권한이 거부되었습니다.");
+            alert("📋 현재 권한 상태: " + permission);
+            //alert("❌ 알림 권한이 거부되었습니다.");
             return;
           }
 
