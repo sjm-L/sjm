@@ -19,6 +19,7 @@
       import {
         getMessaging,
         getToken,
+        onMessage,
       } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-messaging.js";
 
       const firebaseConfig = {
@@ -64,6 +65,41 @@
       document
         .getElementById("pushBtn")
         .addEventListener("click", registerServiceWorkerAndGetToken);
+
+      // ✅ Foreground 메시지 수신
+      onMessage(messaging, (payload) => {
+        console.log("📥 Foreground 메시지 도착:", payload);
+        const { title, body } = payload.notification;
+
+        // 필요시 알림 띄우는 로직 여기에 추가
+        if (Notification.permission === "granted") {
+          new Notification(title, { body });
+        }
+      });
+
+      // 🔻 [추가] 앱 로드 시 캐시에서 백그라운드 메시지 꺼내기
+      window.addEventListener("load", async () => {
+        try {
+          const cache = await caches.open("push-cache");
+          const res = await cache.match("/last-message");
+
+          if (res) {
+            const payload = await res.json();
+            const { title, body } = payload.notification || {
+              title: "알림",
+              body: "내용 없음",
+            };
+
+            // ✅ 사용자에게 알림 표시
+            alert(`📬 저장된 메시지\n\n제목: ${title}\n내용: ${body}`);
+
+            // ✅ 중복 방지를 위해 삭제
+            await cache.delete("/last-message");
+          }
+        } catch (err) {
+          console.error("💥 캐시에서 메시지 불러오기 실패:", err);
+        }
+      });
     </script>
   </body>
 </html>
