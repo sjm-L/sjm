@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "sjml-18f14"
-  }
+  },
+  "targets": {
+    "sjml-18f14": {
+      "hosting": {
+        "push2": [
+          "push2"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

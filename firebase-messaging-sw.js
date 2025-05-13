@@ -10,7 +10,7 @@ firebase.initializeApp({
   authDomain: "sjml-18f14.firebaseapp.com",
   projectId: "sjml-18f14",
   messagingSenderId: "937757609525",
-  appId: "1:937757609525:web:289106dbbccafb6119eb7c",
+  appId: "1:937757609525:web:3f8b13a84fe9792b19eb7c",
 });
 
 const messaging = firebase.messaging();
