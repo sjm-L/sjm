@@ -1,10 +1,12 @@
 // 1. Firebase 초기 설정 - 콘솔에서 받은 설정값을 복붙해서 사용
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyDcIGVTaeZOMYO7n6fWIzfyL0JnWYb8atA",
+  authDomain: "sjml-18f14.firebaseapp.com",
+  projectId: "sjml-18f14",
+  storageBucket: "sjml-18f14.firebasestorage.app",
+  messagingSenderId: "937757609525",
+  appId: "1:937757609525:web:289106dbbccafb6119eb7c",
+  measurementId: "G-HEMV4LTQQB",
 };
 
 // 2. Firebase 앱 초기화
