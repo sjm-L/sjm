@@ -6,7 +6,7 @@ importScripts(
 );
 
 firebase.initializeApp({
-  apiKey: "AIzaSyD...",
+  apiKey: "AIzaSyDcIGVTaeZOMYO7n6fWIzfyL0JnWYb8atA",
   authDomain: "sjml-18f14.firebaseapp.com",
   projectId: "sjml-18f14",
   messagingSenderId: "937757609525",

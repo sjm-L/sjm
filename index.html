@@ -16,12 +16,13 @@
       } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-messaging.js";
 
       const firebaseConfig = {
-        apiKey: "AIzaSyD...", // 여기에 네 키
+        apiKey: "AIzaSyDcIGVTaeZOMYO7n6fWIzfyL0JnWYb8atA",
         authDomain: "sjml-18f14.firebaseapp.com",
         projectId: "sjml-18f14",
-        storageBucket: "sjml-18f14.appspot.com",
+        storageBucket: "sjml-18f14.firebasestorage.app",
         messagingSenderId: "937757609525",
         appId: "1:937757609525:web:289106dbbccafb6119eb7c",
+        measurementId: "G-HEMV4LTQQB",
       };
 
       const app = initializeApp(firebaseConfig);
@@ -42,7 +43,7 @@
 
           const token = await getToken(messaging, {
             vapidKey:
-              "BJHlFbaDRwKqCFpsoB1cqNhTnjMJkXXZAxuivcv0b6juARpvR2wPKsQRq5nzBnVWkLR-0eFRSRMRg7GdYb1eA",
+              "BJHlIFtaDRwKqCFrpo8LzNgThJmjkXXZAxuivcvObj6uARpv2RwPksQRq5nzBmVVKLBr_QefRSRRMq7rGdYb1eA",
             serviceWorkerRegistration: registration,
           });
 
