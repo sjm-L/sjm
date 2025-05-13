@@ -8,7 +8,6 @@ importScripts(
 
 // Firebase 초기화 (여기도 다시 설정이 필요)
 firebase.initializeApp({
-  apiKey: "YOUR_API_KEY",
   apiKey: "AIzaSyDcIGVTaeZOMYO7n6fWIzfyL0JnWYb8atA",
   authDomain: "sjml-18f14.firebaseapp.com",
   projectId: "sjml-18f14",
