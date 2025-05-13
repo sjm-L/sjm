@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>FCM 알림 테스트</title>
+
+    <!-- ✅ PWA 관련 메타 태그 추가 -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
     <h1>📢 알림 테스트</h1>
@@ -38,7 +44,6 @@
           const permission = await Notification.requestPermission();
           if (permission !== "granted") {
             alert("📋 현재 권한 상태: " + permission);
-            //alert("❌ 알림 권한이 거부되었습니다.");
             return;
           }
 
