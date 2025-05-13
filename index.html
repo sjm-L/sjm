@@ -2,16 +2,61 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>Push Demo</title>
-    <!-- 1. Firebase JS SDK 로드 (호환 모드) -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-messaging-compat.js"></script>
-    <!-- 2. 우리가 직접 작성한 main.js 스크립트를 defer(나중에 실행)으로 불러옴 -->
-    <script defer src="./main.js"></script>
+    <title>FCM 알림 테스트</title>
   </head>
   <body>
     <h1>📢 알림 테스트</h1>
-    <!-- 3. 클릭 시 알림 권한을 요청하는 버튼 -->
     <button id="pushBtn">알림 권한 요청</button>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+      import {
+        getMessaging,
+        getToken,
+      } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-messaging.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD...", // 여기에 네 키
+        authDomain: "sjml-18f14.firebaseapp.com",
+        projectId: "sjml-18f14",
+        storageBucket: "sjml-18f14.appspot.com",
+        messagingSenderId: "937757609525",
+        appId: "1:937757609525:web:289106dbbccafb6119eb7c",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const messaging = getMessaging(app);
+
+      const registerServiceWorkerAndGetToken = async () => {
+        try {
+          const registration = await navigator.serviceWorker.register(
+            "/firebase-messaging-sw.js"
+          );
+          console.log("✅ 서비스워커 등록 성공");
+
+          const permission = await Notification.requestPermission();
+          if (permission !== "granted") {
+            alert("❌ 알림 권한이 거부되었습니다.");
+            return;
+          }
+
+          const token = await getToken(messaging, {
+            vapidKey:
+              "BJHlFbaDRwKqCFpsoB1cqNhTnjMJkXXZAxuivcv0b6juARpvR2wPKsQRq5nzBnVWkLR-0eFRSRMRg7GdYb1eA",
+            serviceWorkerRegistration: registration,
+          });
+
+          console.log("✅ 토큰:", token);
+          alert("📲 푸시 토큰:\n" + token);
+        } catch (err) {
+          console.error("💥 오류 발생:", err);
+          alert("💥 오류: " + err.message);
+        }
+      };
+
+      document
+        .getElementById("pushBtn")
+        .addEventListener("click", registerServiceWorkerAndGetToken);
+    </script>
   </body>
 </html>
